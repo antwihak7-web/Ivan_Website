@@ -166,6 +166,21 @@
       background: rgba(255, 255, 255, 0.1); border-color: rgba(255, 255, 255, 0.3);
     }
 
+    /* 按钮图标样式 */
+    .btn-icon {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+    }
+
+    .btn-primary .btn-icon {
+      color: #0a0a0a;
+    }
+
+    .btn-secondary .btn-icon {
+      color: #ffffff;
+    }
+
     /* =========================================================
        3. 首屏强光晕排版与右侧人像 (Hero Section)
        ========================================================= */
@@ -390,3 +405,91 @@
     footer { padding: 60px 0; text-align: center; color: var(--text-muted); font-size: 14px; margin-top: 80px; border-top: 1px solid var(--border-subtle); }
     .footer-contacts { display: flex; justify-content: center; gap: 24px; margin-bottom: 16px; }
     .footer-contacts a:hover { color: var(--text-main); }
+
+/* =========================================================
+   7. 优雅下拉菜单样式 (Refined Dropdown)
+   ========================================================= */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: calc(100% + 12px);
+  left: 50%;
+  transform: translateX(-50%) translateY(-8px);
+  min-width: 180px;
+  padding: 8px;
+  background: rgba(28, 28, 30, 0.95);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  box-shadow: 
+    0 20px 40px -8px rgba(0, 0, 0, 0.6),
+    0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.25s cubic-bezier(0.23, 1, 0.32, 1);
+  z-index: 100;
+}
+
+.dropdown:hover .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+.dropdown-menu a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  margin: 2px 0;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 10px;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  letter-spacing: 0.01em;
+}
+
+.dropdown-menu a:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateX(2px);
+}
+
+.dropdown-icon {
+  font-size: 16px;
+  line-height: 1;
+  opacity: 0.9;
+}
+
+.dropdown-trigger {
+  cursor: default;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.dropdown:hover .dropdown-trigger {
+  color: var(--text-main);
+  opacity: 1;
+}
+
+/* 下拉菜单顶部小三角 */
+.dropdown-menu::before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+  width: 10px;
+  height: 10px;
+  background: rgba(28, 28, 30, 0.95);
+  border-left: 1px solid rgba(255, 255, 255, 0.12);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(24px);
+}
